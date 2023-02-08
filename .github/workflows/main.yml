@@ -21,11 +21,12 @@ jobs:
       
     - name: Get toolchains
       run: |
-        mkdir clang
-        wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/master/clang-r377782d.tar.gz
-        tar -C "clang" -xvzf clang-r377782d.tar.gz
-        git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 --branch=master --depth=1
-        git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 --branch=master --depth=1
+        #mkdir clang
+        #wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/master/clang-r377782d.tar.gz
+        #tar -C "clang" -xvzf clang-r377782d.tar.gz
+        git clone https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r445002 --depth=1 --single-branch --no-tags -b 11.0 clang
+        git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-10.0.0_r47 --depth=1 --single-branch --no-tags 
+        git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-10.0.0_r47 --depth=1 --single-branch --no-tags
       
     - name: Build
       run: |
